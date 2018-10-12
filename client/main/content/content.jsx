@@ -10,59 +10,56 @@ const EventsActions = require('shared/events/events.actions');
 
 const Content = createClass({
 	displayName : 'Content',
-	getInitialState() {
-		return {
-			adding : false,
-		};
-	},
 	getDefaultProps() {
 		return {
-			openAddEvent : () => {},
 			onEventClick : () => {},
-			activeEvent  : -1,
+			setAdding    : () => {},
 		};
 	},
-	openAddEvent() {
-		this.setState({
-			adding : true,
-		});
-	},
 	toggleAdd() {
-		this.setState({
-			adding : !this.state.adding,
-		});
+		this.props.setAdding(!this.props.adding);
 	},
 	render(){
 		const rootClassname = cx({
-			'content__wrapper--adding' : this.state.adding,
+			'content__wrapper--adding' : this.props.adding,
 		}, 'content__wrapper');
 
 		const addButtonClasses = cx({
-			'button--primary' : !this.state.adding,
-			'button--danger'  : this.state.adding,
+			'button--primary' : !this.props.adding,
+			'button--danger'  : this.props.adding,
 		}, 'button');
 
 		return <div className={rootClassname}>
 			<div className='content__menu'>
 				<div>
-					<button className={addButtonClasses} onClick={this.toggleAdd}>{this.state.adding ? 'Close' : 'Add'}</button>
+					<button className={addButtonClasses} onClick={this.toggleAdd}>{this.props.adding ? 'Close' : 'Add'}</button>
 				</div>
 			</div>
 			<div className='content__events'>
-				<Events activeEvent={this.props.activeEvent} onEventClick={this.props.onEventClick}/>
+				<Events onEventClick={this.props.onEventClick}/>
 			</div>
 			<div className='content__add-event'>
-				<EventsStore.component
-					component={AddEvent}
-					getProps={() => ({
-						cancel   : this.toggleAdd,
-						addEvent : EventsActions.addEvent,
-						saving   : EventsStore.getSaving(),
-					})}
+				<AddEvent
+					addEvent={this.props.addEvent}
+					saving={this.props.saving}
 				/>
 			</div>
 		</div>;
 	},
 });
 
-module.exports = Content;
+const ContentWrapper = createClass({
+	render() {
+		return <EventsStore.component
+			component={Content}
+			getProps={() => ({
+				addEvent  : EventsActions.addEvent,
+				saving    : EventsStore.getSaving(),
+				adding    : EventsStore.isAdding(),
+				setAdding : EventsActions.setAdding,
+			})}
+		/>;
+	},
+});
+
+module.exports = ContentWrapper;

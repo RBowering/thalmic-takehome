@@ -5,6 +5,7 @@ const State = {
 	loading     : false,
 	saving      : false,
 	activeEvent : -1,
+	adding     	: false,
 };
 
 const EventsStore = flux({
@@ -33,6 +34,9 @@ const EventsStore = flux({
 	removeEvent(id) {
 		State.events = State.events.filter((event) => event.id !== id);
 	},
+	setAdding(adding) {
+		State.adding = adding;
+	},
 });
 
 EventsStore.getEvents = () => State.events;
@@ -41,6 +45,7 @@ EventsStore.getEventById = (id) => State.events.find((event) => event.id === id)
 EventsStore.getActiveEventId = () => State.activeEvent;
 EventsStore.getActiveEvent = () => State.events.find((event) => event.id === State.activeEvent);
 EventsStore.isLoading = () => State.loading;
+EventsStore.isAdding = () => State.adding;
 
 // TODO: Memoize this so it doesn't get too expensive
 EventsStore.getFilteredEvents = () => {

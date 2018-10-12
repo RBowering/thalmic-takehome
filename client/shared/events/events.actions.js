@@ -22,9 +22,13 @@ const EventsActions = {
 		request.post(url).send(event).then((response) => {
 			EventsStore.setters.addEvent(response.body);
 			EventsStore.setters.setSaving(false);
+			EventsStore.setters.setAdding(false);
 		}, () => {
 			EventsStore.setters.setSaving(false);
 		});
+	},
+	setAdding(adding) {
+		EventsStore.setters.setAdding(adding);
 	},
 	setActiveEvent(id) {
 		EventsStore.setters.setActiveEvent(id);
