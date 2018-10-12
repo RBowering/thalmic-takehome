@@ -62,7 +62,7 @@ EventsStore.getFilteredEvents = () => {
 	}
 
 	const filterLower = State.filter.toLowerCase();
-	return State.events.filter((event) => event.title.toLowerCase().indexOf(filterLower) > -1);
+	return State.events.filter((event) => typeof event.title === 'string' && event.title.toLowerCase().indexOf(filterLower) > -1);
 };
 
 module.exports = EventsStore;
