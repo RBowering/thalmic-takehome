@@ -8,13 +8,18 @@
   grid-column-gap: @spacing-sm;
 
   grid-template:
-    [navbar-row-start] "logo search" auto [navbar-row-end]
-    / 271px 1fr;
+    [navbar-row-start] "logo" auto [navbar-row-end]
+    [search-row-start] "search" auto [search-row-end]
+    / 100%;
 
   .bp-lg ({
     grid-template:
       [navbar-row-start] "logo title . search" auto [navbar-row-end]
       / 271px auto 1fr 300px;
+
+    .navbar__logo {
+      margin-bottom: 0;
+    }
   });
 
   background-color: @background-brand;
@@ -25,16 +30,8 @@
     grid-area: logo;
     display: flex;
     align-items: center;
-  }
-
-  .navbar__logo--small {
-    grid-area: logo-small;
-    display: none;
-    align-items: center;
-
-    .bp-lg({
-      display: flex;
-    })
+    margin-bottom: @spacing-xs;
+    justify-self: center;
   }
 
   .navbar__title {
