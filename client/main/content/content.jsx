@@ -14,6 +14,7 @@ const Content = createClass({
 		return {
 			onEventClick : () => {},
 			setAdding    : () => {},
+			onEventClick : () => {},
 		};
 	},
 	toggleAdd() {
@@ -49,14 +50,20 @@ const Content = createClass({
 });
 
 const ContentWrapper = createClass({
+	getDefaultProps() {
+		return {
+			onEventClick : () => {},
+		};
+	},
 	render() {
 		return <EventsStore.component
 			component={Content}
 			getProps={() => ({
-				addEvent  : EventsActions.addEvent,
-				saving    : EventsStore.getSaving(),
-				adding    : EventsStore.isAdding(),
-				setAdding : EventsActions.setAdding,
+				addEvent     : EventsActions.addEvent,
+				saving       : EventsStore.getSaving(),
+				adding       : EventsStore.isAdding(),
+				setAdding    : EventsActions.setAdding,
+				onEventClick : this.props.onEventClick,
 			})}
 		/>;
 	},
