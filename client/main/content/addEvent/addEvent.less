@@ -1,0 +1,38 @@
+@import 'less/variables.less';
+
+.add-event__wrapper {
+  display: grid;
+  min-width: 100vw;
+
+  .bp-sm ({
+    min-width: 500px;
+  });
+
+  #addEvent-form {
+    > div {
+      width: 100%;
+      min-height: 20px;
+      margin: @spacing-sm 0;
+      display: flex;
+      justify-content:space-between;
+      align-items: center;
+
+      > label {
+        padding-right: @spacing-md;
+      }
+      > input {
+        min-width: 200px;
+        width: 100%;
+      }
+      > textarea {
+        width: 100%;
+      }
+    }
+  }
+
+  .add-event__buttons {
+    width: 100%;
+    display: grid;
+    grid-gap: @spacing-xs;
+  }
+}

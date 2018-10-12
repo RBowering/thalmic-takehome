@@ -1,0 +1,55 @@
+@import 'less/variables.less';
+
+.navbar__wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  justify-content: center;
+  grid-column-gap: @spacing-sm;
+
+  grid-template:
+    [navbar-row-start] "logo search" auto [navbar-row-end]
+    / 271px 1fr;
+
+  .bp-lg ({
+    grid-template:
+      [navbar-row-start] "logo title . search" auto [navbar-row-end]
+      / 271px auto 1fr 300px;
+  });
+
+  background-color: @background-brand;
+  box-shadow: 0 2px 10px @box-shadow-color;
+  padding: @spacing-xs @spacing-sm;
+
+  .navbar__logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__logo--small {
+    grid-area: logo-small;
+    display: none;
+    align-items: center;
+
+    .bp-lg({
+      display: flex;
+    })
+  }
+
+  .navbar__title {
+    grid-area: title;
+    display: none;
+    align-items: center;
+
+    .bp-lg({
+      display: flex;
+    })
+  }
+
+  .navbar__search {
+    grid-area: search;
+    display: flex;
+    align-items: center;
+  }
+}

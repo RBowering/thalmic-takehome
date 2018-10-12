@@ -1,0 +1,78 @@
+@import 'less/variables.less';
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: @background-secondary;
+
+  .Main {
+    width: 100%;
+    height: 100%;
+    display: grid;
+
+    grid-template:
+            [header-start] "header header" fit-content(75px) [header-end]
+            [content-start] "content sidebar" auto [content-end]
+      / 1fr 0;
+
+    &.Main__sidebar--open {
+      grid-template:
+        [header-start] "header header" fit-content(75px) [header-end]
+        [content-start] "sidebar sidebar" auto [content-end]
+        / 1fr 1fr;
+
+      .content {
+        display: none;
+      }
+
+      .sidebar {
+        display: initial;
+      }
+    }
+
+    .bp-md({
+      grid-template:
+              [header-start] "header header" fit-content(75px) [header-end]
+              [content-start] "content sidebar" auto [content-end]
+      / 1fr 0;
+
+      &.Main__sidebar--open {
+        grid-template:
+          [header-start] "header header" fit-content(75px) [header-end]
+          [content-start] "content sidebar" auto [content-end]
+          / 1fr minmax(25%, 500px);
+
+        .sidebar {
+          display: initial;
+        }
+
+        .content {
+          display: initial;
+        }
+      }
+    });
+
+
+    .navBar {
+      grid-area: header;
+      align-self: stretch;
+    }
+
+    .content {
+      width: 100%;
+      height: 100%;
+      grid-area: content;
+      justify-self: center;
+      background-color: @background-secondary;
+      display: initial;
+    }
+
+    .sidebar {
+      width: 100%;
+      height: 100%;
+      grid-area: sidebar;
+      justify-self: center;
+      display: none;
+    }
+  }
+}

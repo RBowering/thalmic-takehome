@@ -1,0 +1,1 @@
+require('pico-conf').add(global.vitreum_props.config);

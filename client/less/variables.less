@@ -1,0 +1,69 @@
+// COLOURS
+@background-primary: #FFF;
+@background-secondary: #f0f0f0;
+@background-brand: #031a26;
+@brand-primary: #1FBADA;
+@color-primary: #00B3D9;
+@color-danger: #EF4050;
+@color-success: green;
+@color-warn: yellow;
+
+
+// TYPOGRAPHY
+@text-color: black;
+@font-size: 14px;
+@font-family: Ariel sans-serif;
+@heading-color: @color-primary;
+@heading-font-size: 24px;
+@subheading-color: @color-primary;
+@subheading-font-size: 16px;
+
+// BUTTONS
+@button-color-primary: @brand-primary;
+@button-color-success: @color-success;
+@button-color-danger: @color-danger;
+@button-border-radius: 14px;
+@button-min-width: 150px;
+@button-padding: @spacing-sm;
+@button-hover-opacity: 0.8;
+
+// SPACING
+@spacing-xs: 8px;
+@spacing-sm: 16px;
+@spacing-md: 24px;
+@spacing-lg: 32px;
+@spacing-xl: 40px;
+
+
+// PANELS
+@panel-background-color: darken(@background-secondary, 10%);
+@panel-shadow-color: @box-shadow-color;
+@panel-box-shadow: -3px 3px 5px @panel-shadow-color;
+@panel-active-indicator-size: 4px;
+@panel-width: 400px;
+
+@box-shadow-color: lighten(@background-brand, 10%);
+
+
+// SIDEBAR
+@sidebar-item-height: auto;
+@sidebar-column-width: 1fr;
+
+
+// SCREEN SIZE
+@breakpoint-sm: 545px;
+@breakpoint-md: 795px;
+@breakpoint-lg: 1065px;
+
+.bp-sm(@rules) {
+  @media screen and (min-width: @breakpoint-sm) { @rules() }
+}
+
+.bp-md(@rules) {
+  @media screen and (min-width: @breakpoint-md) { @rules() }
+}
+
+.bp-lg(@rules) {
+  @media screen and (min-width: @breakpoint-lg) { @rules() }
+}
+

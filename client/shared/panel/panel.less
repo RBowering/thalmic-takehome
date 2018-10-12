@@ -1,0 +1,40 @@
+@import 'less/variables.less';
+
+.panel__wrapper {
+  display: grid;
+  grid-template:
+    [header-start] "header" auto [header-end]
+    [body-start] "body" 1fr [body-end]
+    [footer-start] "footer" auto [footer-end]
+    / auto;
+  background-color: @panel-background-color;
+  box-shadow: @panel-box-shadow;
+  padding: @spacing-xs;
+  grid-row-gap: @spacing-sm;
+  grid-column-gap: @spacing-xs;
+
+  &.panel__wrapper--icon {
+    grid-template:
+      [header-start] "icon header" 50px [header-end]
+      [body-start] "body body" auto [body-end]
+      [footer-start] "footer footer" auto [footer-end]
+      / 50px auto;
+  }
+
+  .panel__icon {
+    grid-area: icon;
+  }
+
+  .panel__header {
+    grid-area: header;
+    align-self: center;
+  }
+
+  .panel__body {
+    grid-area: body;
+  }
+
+  .panel__footer {
+    grid-area: footer;
+  }
+}
