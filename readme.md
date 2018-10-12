@@ -4,6 +4,10 @@
 # Run instructions
 Run the following commands in order.
 
+`export NODE_ENV=development`
+
+Replacing `development` with the relevant environment.
+
 `npm install`
 
 
