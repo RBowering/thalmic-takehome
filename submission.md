@@ -3,7 +3,7 @@
 This is my submission for the Thalmic Labs Front-End/Full-Stack interview take home challenge. I present a solution that focuses on a minimal layout that takes advantage of Thalmic's colour branding and a mobile first approach.
 
 # Structure
-I aimed to use a single store for this project in order to not over complicate things. I used `pico-flux` as my state management library and was pleasently surprised at the improvements the library has overgone since I had last used it.
+I aimed to use a single store for this project in order to not overcomplicate things. I used `pico-flux` as my state management library and was pleasantly surprised at the improvements the library has undergone since I had last used it.
 
 The only other notable library used was `informed`  in order to make managing the state of the solitary form easier.
 
@@ -16,9 +16,9 @@ Outside of the event components, only one other shared component was created - P
 `variables.less` contains the declaration of all the less variables used in the app and also a few mixins for breakpoints.
 
 `tweak.less` is empty, but is included in such a way that variables can be overridden here without having to modify the original value in the variables file.
-This also has the potential to be extended for themeing purposses.
+This also has the potential to be extended for themeing purposes.
 
-###Node
+### Node
 No changes made.
 
 # Filtering
@@ -32,7 +32,7 @@ If connections are flakey, the actions sending requests could be modified to que
 Care must be given to make sure that requests receiving valid errors do not get queued, and if you do want this process to be obvious to the user, then the failed requests could be stored in the store so that the UI can know that something is pending.
 
 ### More complex filtering
-While I have implemented a bit more complex filtering in my submission, to make this a product for more than technical people or domain experts, a pop-over UI would have to be created to select which relevant fields will be searched. This could also include sorting options to make it easier to scan through the results.
+While I have implemented slightly complex filtering in my submission, to make this a product for more than technical people or domain experts, a pop-over UI would have to be created to select which relevant fields will be searched. This could also include sorting options to make it easier to scan through the results.
 
 In order to get this right I would need to ask the operators what their most common use cases are when using this tool. What information do they actually care about? What terminology might they use that doesn't line up with the technical implementation. This would be very important in creating intuitive labelling.
 
